@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, abort
 import requests
 from src.stats import get_stats
 
@@ -14,6 +14,6 @@ def stats(organization):
   headers = {'Authorization': request.headers.get('Authorization')}
   r = requests.get(url, headers = headers)
   if r.status_code == requests.codes.ok:
-    return jsonify(get_stats(r.json(), headers)), 200, {'Content-Type': 'application/json'}
+    return jsonify(get_stats(r.json(), headers))
   else:
-    return r.content, r.status_code, {'Content-Type': 'application/json'}
+    return abort(r.status_code)
