@@ -3,11 +3,10 @@ from functools import reduce
 from flask import abort
 
 def fetch_property(url, headers):
+  print("called")
+  print(headers)
   r = requests.get(url, headers)
-  if r.status_code == requests.codes.ok:
-    return r.json()
-  else:
-    abort(r.status_code)
+  return r.json()
 
 def reduce_dict(dict_a, dict_b):
   dict_c = dict_a.copy()
