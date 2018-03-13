@@ -14,6 +14,6 @@ def stats(organization):
   headers = {'Authorization': request.headers.get('Authorization')}
   r = requests.get(url, headers = headers)
   if r.status_code == requests.codes.ok:
-    return jsonify(get_stats(r.json(), headers))
+    return jsonify(get_stats(r.json()))
   else:
     return abort(r.status_code)
