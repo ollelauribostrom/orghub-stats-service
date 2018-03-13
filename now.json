@@ -1,6 +1,6 @@
 {
   "name": "orghub-stats-service",
-  "alias": "orghub-stats.now.sh",
+  "alias": "orghub-stats-service.now.sh",
   "public": true,
   "type": "docker"
 }
