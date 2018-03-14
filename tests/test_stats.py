@@ -1,5 +1,3 @@
-import pytest
-import json
 from src.stats import merge_languages, is_standalone, transform_repo, combine_repos
 
 def test_merge_languages():
