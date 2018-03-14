@@ -32,4 +32,4 @@ clean:
 	docker rmi -f $$(docker images $(IMAGE_NAME) -q)
 
 publish:
-	now --docker --public
+	now && now alias

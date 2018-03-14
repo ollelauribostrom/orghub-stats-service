@@ -1,14 +1,14 @@
-import requests
 from functools import reduce
-from flask import abort
 
 def merge_languages(languages_a, languages_b):
   return list(set(languages_a + languages_b))
 
-def filter_repos(repo):
-  return repo['fork'] == False
+def is_standalone(repo):
+  if 'fork' in repo:
+    return repo['fork'] is not True
+  return True
 
-def map_repos(repo):
+def transform_repo(repo):
   return {
     'stars': repo['stargazers_count'],
     'issues': repo['open_issues_count'],
@@ -16,7 +16,7 @@ def map_repos(repo):
     'languages': [repo['language']]
   }
 
-def reduce_repos(repo_a, repo_b):
+def combine_repos(repo_a, repo_b):
   return {
     'stars': repo_a['stars'] + repo_b['stars'],
     'issues': repo_a['issues'] + repo_b['issues'],
@@ -25,4 +25,4 @@ def reduce_repos(repo_a, repo_b):
   }
 
 def get_stats(repo_list):
-  return reduce(reduce_repos, map(lambda x: map_repos(x), filter(filter_repos, repo_list)))
+  return reduce(combine_repos, map(lambda x: transform_repo(x), filter(is_standalone, repo_list)))
