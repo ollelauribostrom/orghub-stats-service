@@ -1,5 +1,13 @@
 # orghub/stats-service
-_todo_
+Statistics API for OrgHub app
+
+> Deployed @ https://orghub-stats-service.now.sh
+
+Endpoints
+---------
+| Endpoint              | Method    |
+|:--------------------- |:----------|
+| /stats/:org           | GET       |
 
 
 Commands
