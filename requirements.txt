@@ -13,7 +13,7 @@ Jinja2==2.10
 jmespath==0.9.3
 MarkupSafe==1.0
 pluggy==0.6.0
-py==1.5.2
+py==1.10.0
 pyasn1==0.4.2
 PyJWT==1.5.3
 PySocks==1.6.8
